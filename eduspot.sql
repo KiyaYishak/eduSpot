@@ -1,4 +1,4 @@
--- Create the database
+
 CREATE DATABASE EduSpot;
 
 -- Use the database
@@ -53,12 +53,13 @@ VALUES
 -- Sample data for file uploads by teachers
 INSERT INTO files (teacher_id, student_id, file_name, file_path) 
 VALUES 
-(1, 1, 'mathematics_homework.pdf', 'uploads/mathematics_homework.pdf'),
-(2, 2, 'history_lesson_plan.pdf', 'uploads/history_lesson_plan.pdf'),
-(3, 3, 'science_notes.pdf', 'uploads/science_notes.pdf');
+(1, 1, 'database_management.pdf', 'uploads/database_management.pdf'),
+(2, 2, 'network_security.pdf', 'uploads/network_security.pdf'),
+(3, 3, 'data_structures.pdf', 'uploads/data_structures.pdf');
+
 
 -- Student login query (example: Samuel Tesfaye)
-SELECT * FROM students 
+SELECT * FROM students
 WHERE (username = 'samuel_tesfaye' OR email = 'samuel@example.com') 
 AND password = 'hashed_password_here';
 
@@ -66,3 +67,8 @@ AND password = 'hashed_password_here';
 SELECT * FROM teachers 
 WHERE username = 'marta_getachew' 
 AND password = 'hashed_password_here';
+
+
+
+
+
