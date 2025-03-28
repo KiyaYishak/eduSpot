@@ -6,8 +6,6 @@ USE EduSpot;
 
 -- Table for storing student data
 CREATE TABLE students (
-    student_id INT AUTO_INCREMENT PRIMARY KEY,
-    full_name VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
@@ -16,8 +14,6 @@ CREATE TABLE students (
 
 -- Table for storing teacher data
 CREATE TABLE teachers (
-    teacher_id INT AUTO_INCREMENT PRIMARY KEY,
-    full_name VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
@@ -27,13 +23,19 @@ CREATE TABLE teachers (
 -- Table for storing uploaded files by teachers
 CREATE TABLE files (
     file_id INT AUTO_INCREMENT PRIMARY KEY,
-    teacher_id INT,
-    student_id INT,
     file_name VARCHAR(255) NOT NULL,
     file_path VARCHAR(255) NOT NULL,
     upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id),
-    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
+
+
+-- Create the contact table
+CREATE TABLE contact (
+    full_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    subject VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Sample data for students
@@ -53,9 +55,9 @@ VALUES
 -- Sample data for file uploads by teachers
 INSERT INTO files (teacher_id, student_id, file_name, file_path) 
 VALUES 
-(1, 1, 'database_management.pdf', 'uploads/database_management.pdf'),
-(2, 2, 'network_security.pdf', 'uploads/network_security.pdf'),
-(3, 3, 'data_structures.pdf', 'uploads/data_structures.pdf');
+('database_management.pdf', 'uploads/database_management.pdf'),
+('network_security.pdf', 'uploads/network_security.pdf'),
+('data_structures.pdf', 'uploads/data_structures.pdf');
 
 
 -- Student login query (example: Samuel Tesfaye)
@@ -72,3 +74,4 @@ AND password = 'hashed_password_here';
 
 
 
+ 
